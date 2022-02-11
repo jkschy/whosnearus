@@ -1,0 +1,31 @@
+.navbarFlex {
+}
+
+.horizNavbar {
+    justify-content: space-around;
+    position: absolute;
+    bottom: 3px;
+    width: 100vw;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+.horizNavbar::before {
+    display: none !important;
+}
+
+.horizNavbar::after {
+    display: none !important;
+}
+
+.horizNavbar li .ant-menu-title-content {
+    display: none;
+}
+
+.horizNavbar li {
+    padding-bottom: 10px;
+}
+
+.withTitle {
+    display: block !important;
+}

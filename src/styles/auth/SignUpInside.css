@@ -1,0 +1,6 @@
+.signUp {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+    row-gap: 10px;
+}

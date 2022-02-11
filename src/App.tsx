@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useRoutes} from "react-router-dom";
+import allRoutes from "./AllRoutes";
+import AppContext, {context} from "./components/general/AppContext";
+import {useState} from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [mainRoutes, setMainRoutes] = useState(new allRoutes());
+    const routing = useRoutes(mainRoutes.allRoutes);
+
+    const userSettings: context = {
+        addNewRoute: (path: string, element?: JSX.Element) => {
+            setMainRoutes(mainRoutes.addRoute(path, element));
+        }
+    }
+
+    return (
+        <AppContext.Provider value={userSettings}>
+            {routing}
+        </AppContext.Provider>
+    )
+};
 
 export default App;

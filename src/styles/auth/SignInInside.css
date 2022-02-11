@@ -1,0 +1,18 @@
+.signIn {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+    row-gap: 10px;
+}
+
+.badSignIn {
+    cursor: default;
+    margin: -10px 0 0 0;
+    opacity: 0;
+    color: red;
+    transition: opacity 0.3s;
+}
+
+.show {
+    opacity: 1;
+}
