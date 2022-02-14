@@ -31,7 +31,6 @@ class FirestoreWorkflow {
         const currentProfile = userProfiles.docs[0].data();
         const parsedOrgs = await this.getOrgsData(currentProfile.orgs);
         const up = new userProfile(currentProfile.email, currentProfile.name, currentProfile.ID, parsedOrgs);
-        console.log(up);
         return up
     }
 

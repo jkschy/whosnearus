@@ -9,18 +9,11 @@ const UserCard = () => {
     const [orgs, setOrgs] = useState<Array<OrgTableData>>([])
 
     useEffect(() => {
-        const orgs = firebaseWorkflow.authWorkflow.userProfile?.getOrgs()
-        console.log(firebaseWorkflow.authWorkflow.userProfile)
+        const orgs = firebaseWorkflow.authWorkflow.getUserProfile();
         if (orgs) {
-            const orgData: OrgTableData[] = [];
-
-            orgs.forEach((org) => {
-                orgData.push(org.buildTableEntry());
-            });
-
-            setOrgs([...orgData]);
+            setOrgs(orgs.getOrgs().map(org => org.buildTableEntry()));
         }
-    }, [firebaseWorkflow.authWorkflow.userProfile])
+    }, [])
 
     const columns: IColumn[] = [];
     columns.push({key: 'org-name', title: 'Organization Name', dataIndex: 'name'})
@@ -28,9 +21,7 @@ const UserCard = () => {
     columns.push({key: 'org-owner', title: 'Org Owner', dataIndex: 'owner'})
     columns.push({key: 'org-industry', title: 'Organization Industry', dataIndex: 'industry'})
     columns.push({key: 'org-website', title: 'Organization Website', dataIndex: 'website'})
-
-    console.log(orgs);
-
+    
     return (
         <div>
             <Navbar openKey={["Account"]}>
