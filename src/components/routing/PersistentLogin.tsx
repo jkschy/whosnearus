@@ -13,10 +13,13 @@ const PersistentLogin = () => {
     const [lookingForUser, setLookingForUser] = useState<boolean>(true);
 
     useEffect(() => {
-        firebase.auth().onAuthStateChanged(async user => {
+        firebase.auth().onAuthStateChanged(user => {
             if (user?.email) {
-                setUserProfile(await firebaseWorkflow.firestoreWorkflow.getUserProfile(user.email));
-                myContext.addNewRoute(path);
+                firebaseWorkflow.firestoreWorkflow.getUserProfile(user.email).then((res) => {
+                    setUserProfile(res);
+                    firebaseWorkflow.authWorkflow.userProfile = res;
+                    myContext.addNewRoute(path);
+                });
             } else {
                 myContext.addNewRoute('/', <AuthCard/>);
                 setLookingForUser(false);
