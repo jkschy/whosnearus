@@ -22,9 +22,8 @@
 /*}*/
 
 .content {
-    padding-top: 10px;
     margin-left: 10px;
-    width: calc(100% - 20px)
+    width: 100%
 }
 
 @keyframes collapse {

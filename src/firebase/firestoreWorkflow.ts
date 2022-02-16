@@ -2,7 +2,6 @@ import firebase from "../firebase";
 import userProfile from "../models/userProfile";
 import Org from "../models/Org";
 import DocumentReference = firebase.firestore.DocumentReference;
-import User = firebase.User;
 
 
 class FirestoreWorkflow {
@@ -45,19 +44,10 @@ class FirestoreWorkflow {
             const firebaseRef = await org.get();
             if (firebaseRef.exists) {
                 const orgData = firebaseRef.data();
-                returnArray.push(new Org(orgData?.name, orgData?.numUsers, await this.getOwnerName(orgData?.owner), firebaseRef.id, orgData?.industry, orgData?.website));
+                returnArray.push(new Org(orgData?.name, orgData?.numUsers, orgData?.owner, firebaseRef.id, orgData?.industry, orgData?.website));
             }
         }
         return returnArray;
-    }
-
-    async getOwnerName(user: DocumentReference): Promise<string> {
-        const ownerUser = await user.get();
-        if (ownerUser.exists) {
-            return ownerUser ? ownerUser.data()?.name : 'Unknown';
-        } else {
-            return "N/A"
-        }
     }
 }
 

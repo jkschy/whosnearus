@@ -6,12 +6,12 @@ import DocumentReference = firebase.firestore.DocumentReference;
 export default class Org {
     public name: string
     private readonly users: number
-    private readonly owner: string
+    private readonly owner: DocumentReference
     public industry?: string
     private readonly website?: string
     private id: string;
 
-    constructor(name: string, users: number, owner: string, id: string, industry?: string, website?: string) {
+    constructor(name: string, users: number, owner: DocumentReference, id: string, industry?: string, website?: string) {
         this.name = name;
         this.users = users;
         this.owner = owner;

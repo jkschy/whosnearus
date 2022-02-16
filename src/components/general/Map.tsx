@@ -9,7 +9,7 @@ const Map = () => {
     return (
         <>
             <Wrapper render={render} apiKey="AIzaSyAKqZo8ozuobixYzbFY37mmFm_UwG_mbuo">
-                <h1>Test</h1>
+                
             </Wrapper>
         </>
     )
