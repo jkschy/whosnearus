@@ -1,9 +1,10 @@
 import Navbar from "../navbar/Navbar";
+import Map from "../general/Map";
 
 const HomePage = () => {
     return (
         <Navbar openKey={['Home']}>
-            <h1>HOME</h1>
+            <Map/>
         </Navbar>
     )
 }

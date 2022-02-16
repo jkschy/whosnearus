@@ -7,7 +7,7 @@ const Navbar = (props: PropTypes) => {
 
     useEffect(() => {
         const handleResize = () => {
-            setSmallScreen(window.innerWidth < 650);
+            setSmallScreen(window.innerWidth < 845);
         }
 
         window.addEventListener('resize', handleResize)
@@ -16,9 +16,10 @@ const Navbar = (props: PropTypes) => {
     return (
         <>
             {smallScreen && (
-                <HorizontalNavbar openKey={props?.openKey}>
+                <>
+                <HorizontalNavbar openKey={props?.openKey}/>
                     {props.children}
-                </HorizontalNavbar>
+                </>
             )}
             {!smallScreen && (
                 <VerticalNavbar openKey={props?.openKey}>

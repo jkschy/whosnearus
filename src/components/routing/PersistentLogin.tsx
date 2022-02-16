@@ -5,6 +5,7 @@ import userProfile from "../../models/userProfile";
 import firebase from "../../firebase";
 import firebaseWorkflow from "../../firebase/firebaseWorkflow";
 import AuthCard from "../auth/AuthCard";
+import { LoadingOutlined } from "@ant-design/icons"
 
 const PersistentLogin = () => {
     const path = useLocation().pathname;
@@ -33,7 +34,7 @@ const PersistentLogin = () => {
                 <Navigate to={path}/>
             )}
             {lookingForUser && (
-                <h1>Loading ...</h1>
+                <h1><LoadingOutlined/></h1>
             )}
             {!lookingForUser && (
                 <Navigate to={'/'}/>
